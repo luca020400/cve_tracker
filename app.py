@@ -52,9 +52,10 @@ def kernel(k):
 def update():
   r = request.get_json()
   k = r['kernel_id'];
-  c = r['cve_id'];
+  c = r['cve_id'].split(',');
   s = r['status_id'];
-  utils.updatePatchStatus(k, c, s)
+  for cve in c:
+    utils.updatePatchStatus(k, cve, s)
   patched = utils.getNumberOfPatchedByRepoId(k)
   return jsonify({'error': 'success', 'patched': patched})
 
