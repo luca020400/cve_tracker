@@ -147,10 +147,30 @@ div.header {
     color: #00BCD4;
 }
 
-div.back {
+.back {
   position: absolute;
   top: 2px;
   left: 2px;
+}
+
+#error {
+  background-color: #fffde7; /* 50 Yellow */
+  border-radius: 10px;
+  color: #f44336; /* 500 Red */
+  display: none;
+  font-size: 1.2em;
+  padding: 0 10px;
+  text-align: center;
+}
+
+#error a {
+  color: #b71c1c; /* 900 Red */
+  font-size: 0.8em;
+  text-decoration: underline;
+}
+
+#error a:hover {
+  color: #ff1744; /* A400 Red */
 }
 
 div.kernelrow, div.cvediv {
@@ -180,6 +200,7 @@ input[type='checkbox'] {
     text-align: left;
 }
 
+<<<<<<< HEAD
 #spinner {
   height: 100%;
   width: 100%;
@@ -189,4 +210,9 @@ input[type='checkbox'] {
   z-index: 5;
   background-color: rgba(0,0,0,0.5);
   display: none;
+}
+#login {
+  position: absolute;
+  right: 2px;
+  top: 2px;
 }

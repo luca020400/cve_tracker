@@ -8,20 +8,30 @@
   </head>
   <body>
     <div class='frame container'>
-    {% for column in kernels | slice(3) %}
-      {% set last_vendor = '' %}
-      <div class='four columns'>
-      {% for k in column %}
-        {% if last_vendor != kernels[k]['vendor'] %}
-          <div class='header'>{{ kernels[k]['vendor'] }}</div>
-          {% set last_vendor = kernels[k]['vendor'] %}
-        {% endif %}
-        <div class='kernelrow'>
-          <a href='/{{ kernels[k]['repo'] }}'>{{ kernels[k]['name'] }}</a></br>
-        </div>
-      {% endfor %}
+      <div id='login'>
+      {% if not logged_in %}
+        <a href='/login'>login</a>
+      {% else %}
+        <a href='/logout'>logout</a>
+      {% endif %}
       </div>
-    {% endfor %}
+
+      <div>
+        {% for column in kernels | slice(3) %}
+          {% set last_vendor = '' %}
+          <div class='four columns'>
+            {% for k in column %}
+              {% if last_vendor != kernels[k]['vendor'] %}
+                <div class='header'>{{ kernels[k]['vendor'] }}</div>
+                {% set last_vendor = kernels[k]['vendor'] %}
+              {% endif %}
+              <div class='kernelrow'>
+                <a href='/{{ kernels[k]['repo'] }}'>{{ kernels[k]['name'] }}</a></br>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </body>
 </html>

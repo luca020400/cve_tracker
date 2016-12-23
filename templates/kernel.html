@@ -20,7 +20,10 @@
       {% endfor %}
       </div>
       <div class='frame container'>
-        <div class='back'><a href='/'>back</a></div>
+        <header>
+          <span class='back'><a href='/'>back</a></span>
+          <span id='error'><span id='error-msg'>an error message!</span> <a href='javascript:void(0)' onclick='$("#error").css({"display": "none"})'>x</a></span>
+        </header>
         <h3>
           <a href='https://github.com/LineageOS/{{ kernel.repo }}'>{{ kernel.repo }}</a>
         </h3>

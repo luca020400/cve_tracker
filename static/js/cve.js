@@ -30,6 +30,9 @@ function update(c) {
       }
       $("#progressbar").attr("value", data.patched);
       updateProgressBar();
+    } else {
+      $('#error-msg').text('Error: ' + data.error);
+      $('#error').css({'display': 'initial'});
     }
   });
 }
