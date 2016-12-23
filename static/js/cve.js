@@ -9,6 +9,7 @@ function update(c) {
       .map(function(idx, el) { return el.value }).get();
   }
 
+  var spinner = spin();
 
   $.ajax({
     'type': 'POST',
@@ -20,6 +21,7 @@ function update(c) {
              cve_id: cve_id.join(','),
             })
   }).done(function(data) {
+    spinner.stop();
     if (data.error == "success") {
       for (var i = 0; i < cve_id.length; i++) {
         c = $('input[value="' + cve_id[i] + '"]').siblings('.status');
@@ -30,6 +32,18 @@ function update(c) {
       updateProgressBar();
     }
   });
+}
+
+function spin() {
+  $('#spinner').css({'display': 'initial'});
+  var target = $('#spinner')[0];
+  var theSpinner = new Spinner({color: '#fff'}).spin(target);
+  return {
+    stop: function() {
+      theSpinner.stop();
+      $('#spinner').css({'display': 'none'});
+    }
+  }
 }
 
 function updateProgressBar() {
