@@ -54,8 +54,7 @@ def update():
   k = r['kernel_id'];
   c = r['cve_id'].split(',');
   s = r['status_id'];
-  for cve in c:
-    utils.updatePatchStatus(k, cve, s)
+  utils.updatePatchStatus(k, c, s)
   patched = utils.getNumberOfPatchedByRepoId(k)
   return jsonify({'error': 'success', 'patched': patched})
 

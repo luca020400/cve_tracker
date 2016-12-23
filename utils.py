@@ -209,10 +209,11 @@ def getPatchesByRepo(repo):
   conn.close()
   return patches
 
-def updatePatchStatus(kernel_id, cve_id, status_id):
+def updatePatchStatus(kernel_id, cve_ids, status_id):
   conn = sqlite3.connect(app.dbfile)
 
   c = conn.cursor()
-  conn.execute('UPDATE patches SET status_id = ? WHERE kernel_id = ? AND cve_id = ?', (status_id, kernel_id, cve_id))
+  for cve_id in cve_ids:
+    conn.execute('UPDATE patches SET status_id = ? WHERE kernel_id = ? AND cve_id = ?', (status_id, kernel_id, cve_id))
   conn.commit()
   conn.close()
